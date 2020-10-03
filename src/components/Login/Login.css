@@ -1,0 +1,19 @@
+.google{
+    height: 35px;
+    margin: 0 0 5px 0;
+    display: flex;
+    padding: 2px 20px;
+    border: 1px solid lightgray;
+    border-radius: 30px;
+    width: 400px;
+}
+.login_form{
+    width: 570px;
+    height: 457px;
+    box-sizing: border-box;
+    border: 1px solid #ABABAB;
+    background: #FFFFFF;
+    border-radius: 4px;
+    margin: 0 auto;
+    padding: 80px;
+}
