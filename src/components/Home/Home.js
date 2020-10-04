@@ -1,12 +1,20 @@
 import React from 'react';
 import Categoris from '../Categories/Categoris';
-// import { Button, Form, FormControl } from 'react-bootstrap';
 import Header from '../Header/Header';
 import './Home.css';
-import volunteerCategories from '../../FakeData/volunteerCategories';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 
 const Home = () => {
+    const[category, setCategory] = useState([]);
+    useEffect(() => {
+        fetch('http://localhost:9010/categories')
+        .then(res => res.json())
+        .then(data => setCategory(data))
+    }, [])
+
+
     return (
         <div className='banner_area'>
             <Header></Header>
@@ -19,7 +27,7 @@ const Home = () => {
 
                 <div className="row">
                     {
-                        volunteerCategories.map(category => <Categoris key={category.id} category={category}></Categoris>)
+                        category.map(category => <Categoris key={category.id} category={category}></Categoris>)
                     }
                 </div>
             </div>

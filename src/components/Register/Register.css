@@ -12,14 +12,20 @@
     height: 32px;
     margin: 0 auto;
 }
+
 .inside_box h4{
     margin: 25px 0 45px 0;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 30px;
     line-height: 29px;
     color: #000000
 }
-.input{
+.inside_box input{
+    width: 462px;
+    height: 45px;
+    margin: 0 auto;
+    border: none;
+    border-bottom: 1px solid gray;
     margin-bottom: 30px;
     color: black;
 }

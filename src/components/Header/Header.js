@@ -17,9 +17,9 @@ const Header = () => {
                     <Link style={{textDecoration:'none', color:'black', fontSize:'18px'}} to='/'>Home</Link>
                     <Link style={{textDecoration:'none', color:'black', fontSize:'18px', marginLeft: '15px'}} to='/'>Donation</Link>
                     <Link style={{textDecoration:'none', color:'black', fontSize:'18px', marginLeft: '15px'}} to='/event'>Events</Link>
-                    <Link style={{textDecoration:'none', color:'black', fontSize:'18px', marginLeft: '15px'}} to='/register'>Blog</Link>
-                    <Link to='/login'><Button style={{color:'white', background:'#3F90FC', padding: '8px 25px', marginLeft: '15px'}} variant="contained">Register</Button></Link>
-                    <Button style={{color:'white', background:'#434141', padding: '8px 25px'}} variant="contained">Admin</Button>
+                    <Link style={{textDecoration:'none', color:'black', fontSize:'18px', marginLeft: '15px'}} to='/'>Blog</Link>
+                    <Link to='/register'><Button style={{color:'white', background:'#3F90FC', padding: '8px 25px', marginLeft: '15px'}} variant="contained">Register</Button></Link>
+                    <Link to='/login'><Button style={{color:'white', background:'#434141', padding: '8px 25px'}} variant="contained">Admin</Button></Link>
                 </Grid>
             </Grid>
             </Container>
