@@ -1,0 +1,30 @@
+.register_box{
+    width: 570px;
+    height: 561px;
+    margin: 70px auto;
+    background: #FFFFFF;
+    border: 1px solid #ABABAB;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+.inside_box{
+    width: 462px;
+    height: 32px;
+    margin: 0 auto;
+}
+.inside_box h4{
+    margin: 25px 0 45px 0;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 29px;
+    color: #000000
+}
+.input{
+    margin-bottom: 30px;
+    color: black;
+}
+.reg_btn{
+    width: 462px;
+    height: 48px;
+    padding: 14px 0px 0px 181px;
+}

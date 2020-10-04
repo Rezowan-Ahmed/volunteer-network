@@ -3,12 +3,13 @@ import './App.css';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 import Home from './components/Home/Home';
 import Login from './components/Login/Login';
 import NoMatch from './components/NoMatch/NoMatch';
+import Register from './components/Register/Register';
+import EventTasks from './components/EventTasks/EventTasks';
 
 export const UserContext = createContext();
 
@@ -30,6 +31,12 @@ function App() {
         </Route>
         <Route path='/login'>
           <Login></Login>
+        </Route>
+        <Route path='/register'>
+          <Register></Register>
+        </Route>
+        <Route path='/event'>
+          <EventTasks></EventTasks>
         </Route>
         <Route path='*'>
           <NoMatch></NoMatch>

@@ -1,0 +1,50 @@
+.event_layout{
+    width: 70%;
+    margin: auto;
+    margin-top: 70px;
+}
+.event_box{
+    display: flex;
+    width: 570px;
+    height: 219px;
+    background: #FFFFFF;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    padding: 20px;
+
+}
+.event_box img{
+    height: 173px;
+    width: 194px;
+    border-radius: 15px;
+
+}
+.box_text{
+    margin-left: 15px;
+    width: 100%;
+
+}
+.box_text h4{
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 33px;
+    color: #000000;
+}
+.box_text h5{
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 26px;
+    color: #000000;
+}
+.cancel_btn{
+    margin-top: 53px;
+    text-align: right;
+}
+.event-cancel{
+    background:#E3E3E3;
+    border:none; 
+    height:48px;
+    width: 131px;
+    cursor:pointer;
+    border-radius:5px;
+  }
