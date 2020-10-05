@@ -4,6 +4,7 @@ import Header from '../Header/Header';
 import './Home.css';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 
 const Home = () => {
@@ -13,7 +14,6 @@ const Home = () => {
         .then(res => res.json())
         .then(data => setCategory(data))
     }, [])
-
 
     return (
         <div className='banner_area'>
@@ -27,7 +27,12 @@ const Home = () => {
 
                 <div className="row">
                     {
-                        category.map(category => <Categoris key={category.id} category={category}></Categoris>)
+                        category.map((category) => 
+                        <div className="col-md-3"><Link to={`/category/:${category._id}`}>
+                        <img style={{ width: '270px', height: '320px', borderRadius:'10px'}} src={category.image} alt="" />
+                        <h6 style={{background: 'orange', height: '24px', textAlign:'center' }}>{category.name}</h6>
+                        </Link></div>
+                )
                     }
                 </div>
             </div>

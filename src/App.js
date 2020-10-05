@@ -16,10 +16,12 @@ export const UserContext = createContext();
 function App() {
 
   const [loggedInUser, setLoggedInUser] = useState({
-    name: '',
+    name:'',
     email: '',
-    password: '',
-    message: ''
+    message: '',
+    date: '',
+    description: '',
+    image: '',
   });
   return (
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
@@ -35,7 +37,7 @@ function App() {
         <Route path='/login'>
           <Login></Login>
         </Route>
-        <Route path='/register'>
+        <Route path='/register/:id'>
           <Register></Register>
         </Route>
         <Route path='/event'>

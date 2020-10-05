@@ -4,15 +4,16 @@ import "firebase/auth";
 import firebaseConfig from './firebase.config';
 import google from '../../logos/google.png';
 import './Login.css';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import logo from '../../logos/Group 1329.png';
+import { useHistory } from 'react-router-dom';
 import { UserContext } from '../../App';
 
 const Login = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
-    // const history = useHistory();
-    // const location = useLocation();
-    // const { from } = location.state || { from: { pathname: "/" } };
+    const history = useHistory();
+    const location = useLocation();
+    const { from } = location.state || { from: { pathname: "/" } };
 
     if (firebase.apps.length === 0) {
         firebase.initializeApp(firebaseConfig);
@@ -21,10 +22,10 @@ const Login = () => {
         const googleProvider = new firebase.auth.GoogleAuthProvider();
         firebase.auth().signInWithPopup(googleProvider)
             .then(function (result) {
-            const { displayName, email } = result.loggedInUser;
-            const fbGoogleSignInUser = { name: displayName, email };
+            const { displayName, email } = result.user;
+            const fbGoogleSignInUser = { name: displayName, email: email };
             setLoggedInUser(fbGoogleSignInUser);
-            // history.replace(from);
+            history.replace(from)
         }).catch(error => {
             const newUserInfo = { ...loggedInUser };
             newUserInfo.message = error.message;
