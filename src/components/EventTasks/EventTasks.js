@@ -1,10 +1,28 @@
-import React from 'react';
+import React, { useEffect , useState} from 'react';
 import './EventTasks.css';
 import background from '../../logos/background.jpg';
 import Header from '../Header/Header';
 import { Grid } from '@material-ui/core';
+import { UserContext } from '../../App';
+import { useContext } from 'react';
 
 const EventTasks = () => {
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const [event, setEvent] = useState([])
+    useEffect( () => {
+        fetch('http://localhost:9010/volunteerEvents', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                email: loggedInUser.email
+            },
+        })
+        .then(res => res.json())
+        .then(data => {
+            setEvent(data)
+        })
+    })
+
     return (
         <div>
         <Header></Header>

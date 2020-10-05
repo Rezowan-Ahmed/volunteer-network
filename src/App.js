@@ -21,7 +21,7 @@ function App() {
     message: '',
     date: '',
     description: '',
-    image: '',
+    image: ''
   });
   return (
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
@@ -38,6 +38,9 @@ function App() {
           <Login></Login>
         </Route>
         <Route path='/register/:id'>
+          <Register></Register>
+        </Route>
+        <Route path='/register'>
           <Register></Register>
         </Route>
         <Route path='/event'>

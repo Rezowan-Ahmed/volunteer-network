@@ -19,12 +19,15 @@ const Register = () => {
 
     useEffect(() => {
         categoryName()
-    }, [])
+    }, [id])
 
     const categoryName = async () => {
         await fetch('http://localhost:9010/categories/' + id)
         .then(res => res.json())
-        .then(data => setCategoryID(data))
+        .then(data => {
+            console.log(data);
+            setCategoryID(data)})
+        
     }
 
     const {name, image} = categoryID ? categoryID[0] : [];
@@ -45,6 +48,7 @@ const Register = () => {
         userInfo.date = input.date;
         userInfo.description = input.description;
         userInfo.image = image;
+        userInfo.category = name;
         setLoggedInUser(userInfo);
         fetch('http://localhost:9010/addRegister', {
             method: 'POST',
@@ -68,11 +72,11 @@ const Register = () => {
             <Form onSubmit={handleRegister} className="inside_box">
                 <h4>Register as a Volunteer</h4>
 
-                <input type="text" name="name" value={loggedInUser.name } placeholder="Full Name" disabled/>
-                <input type="text" name="email" value={loggedInUser.email } placeholder="Username or Email" disabled />
+                <input type="text" value={loggedInUser.name } placeholder="Full Name" disabled/>
+                <input type="text"  value={loggedInUser.email } placeholder="Username or Email" disabled />
                 <input onBlur={handleRegisterInput} type="date" name="date" placeholder="Date" />
                 <input onBlur={handleRegisterInput} type="text" name="description" placeholder="Description" />
-                <input type="text" name="category" value={name} placeholder="Organize books at the library" disabled/>
+                <input type="text" value={name} placeholder="Organize books at the library" disabled/>
 
                 <Button variant="primary" type="submit" className="reg_btn">
                     Registration
