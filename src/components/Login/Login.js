@@ -9,22 +9,24 @@ import logo from '../../logos/Group 1329.png';
 import { useHistory } from 'react-router-dom';
 import { UserContext } from '../../App';
 
+if (firebase.apps.length === 0) {
+    firebase.initializeApp(firebaseConfig);
+}
+
 const Login = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const history = useHistory();
     const location = useLocation();
     const { from } = location.state || { from: { pathname: "/" } };
 
-    if (firebase.apps.length === 0) {
-        firebase.initializeApp(firebaseConfig);
-    }
+    
     const handleGoogleSignIn = () => {
         const googleProvider = new firebase.auth.GoogleAuthProvider();
         firebase.auth().signInWithPopup(googleProvider)
             .then(function (result) {
             const { displayName, email } = result.user;
-            const fbGoogleSignInUser = { name: displayName, email: email };
-            setLoggedInUser(fbGoogleSignInUser);
+            const googleSignInUser = { username: displayName, email: email };
+            setLoggedInUser(googleSignInUser);
             history.replace(from)
         }).catch(error => {
             const newUserInfo = { ...loggedInUser };

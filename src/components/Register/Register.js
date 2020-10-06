@@ -1,6 +1,6 @@
 import React from 'react';
 import { useContext } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 import { useHistory, useParams } from 'react-router-dom';
 import { UserContext } from '../../App';
 import './Register.css';
@@ -11,26 +11,21 @@ const Register = () => {
     const {id} = useParams();
     const history = useHistory();
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
-    const [categoryID , setCategoryID] = useState();
+    const [categoryID , setCategoryID] = useState([]);
     const [input, setInput] = useState({
         date: '',
         description: ''
     });
 
     useEffect(() => {
-        categoryName()
-    }, [id])
-
-    const categoryName = async () => {
-        await fetch('http://localhost:9010/categories/' + id)
+        fetch('http://localhost:9010/categories/')
         .then(res => res.json())
-        .then(data => {
-            console.log(data);
-            setCategoryID(data)})
-        
-    }
+        .then(data => setCategoryID(data))
+    }, [])
 
-    const {name, image} = categoryID ? categoryID[0] : [];
+    const categoryData = categoryID.find(cateData => cateData.id == id) || {};
+    const {name, image} = categoryData;
+
 
     const handleRegisterInput = (e) =>{
         const inputValue = {...input}
@@ -48,7 +43,8 @@ const Register = () => {
         userInfo.date = input.date;
         userInfo.description = input.description;
         userInfo.image = image;
-        userInfo.category = name;
+        userInfo.name = name;
+        
         setLoggedInUser(userInfo);
         fetch('http://localhost:9010/addRegister', {
             method: 'POST',
@@ -72,15 +68,13 @@ const Register = () => {
             <Form onSubmit={handleRegister} className="inside_box">
                 <h4>Register as a Volunteer</h4>
 
-                <input type="text" value={loggedInUser.name } placeholder="Full Name" disabled/>
+                <input type="text" value={loggedInUser.username } placeholder="Full Name" disabled/>
                 <input type="text"  value={loggedInUser.email } placeholder="Username or Email" disabled />
                 <input onBlur={handleRegisterInput} type="date" name="date" placeholder="Date" />
                 <input onBlur={handleRegisterInput} type="text" name="description" placeholder="Description" />
-                <input type="text" value={name} placeholder="Organize books at the library" disabled/>
+                <input type="text" value={name}  placeholder="Organize books at the library" disabled/>
 
-                <Button variant="primary" type="submit" className="reg_btn">
-                    Registration
-                </Button>
+                <input type="submit" name="submit" value="Registration"/>
             </Form>
         </div>
     );

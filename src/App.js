@@ -10,18 +10,20 @@ import Login from './components/Login/Login';
 import NoMatch from './components/NoMatch/NoMatch';
 import Register from './components/Register/Register';
 import EventTasks from './components/EventTasks/EventTasks';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 export const UserContext = createContext();
 
 function App() {
 
   const [loggedInUser, setLoggedInUser] = useState({
-    name:'',
+    username:'',
     email: '',
     message: '',
     date: '',
     description: '',
-    image: ''
+    image: '',
+    title: ''
   });
   return (
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
@@ -37,15 +39,12 @@ function App() {
         <Route path='/login'>
           <Login></Login>
         </Route>
-        <Route path='/register/:id'>
+        <PrivateRoute path='/register/:id'>
           <Register></Register>
-        </Route>
-        <Route path='/register'>
-          <Register></Register>
-        </Route>
-        <Route path='/event'>
+        </PrivateRoute>
+        <PrivateRoute path='/event'>
           <EventTasks></EventTasks>
-        </Route>
+        </PrivateRoute>
         <Route path='*'>
           <NoMatch></NoMatch>
         </Route>

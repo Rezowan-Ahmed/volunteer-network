@@ -1,5 +1,4 @@
 import React from 'react';
-import Categoris from '../Categories/Categoris';
 import Header from '../Header/Header';
 import './Home.css';
 import { useState } from 'react';
@@ -8,11 +7,11 @@ import { Link } from 'react-router-dom';
 
 
 const Home = () => {
-    const[category, setCategory] = useState([]);
+    const [category, setCategory] = useState([]);
     useEffect(() => {
         fetch('http://localhost:9010/categories')
-        .then(res => res.json())
-        .then(data => setCategory(data))
+            .then(res => res.json())
+            .then(data => setCategory(data))
     }, [])
 
     return (
@@ -27,12 +26,14 @@ const Home = () => {
 
                 <div className="row">
                     {
-                        category.map((category) => 
-                        <div className="col-md-3"><Link to={`/category/:${category._id}`}>
-                        <img style={{ width: '270px', height: '320px', borderRadius:'10px'}} src={category.image} alt="" />
-                        <h6 style={{background: 'orange', height: '24px', textAlign:'center' }}>{category.name}</h6>
-                        </Link></div>
-                )
+                        category.map((category) =>
+                            <div className="col-md-3">
+                                <Link to={`/register/${category.id}`}>
+                                    <img style={{ width: '270px', height: '320px', borderRadius: '10px' }} src={category.image} alt="" />
+                                    <h6 style={{ background: 'orange', height: '24px', textAlign: 'center' }}>{category.name}</h6>
+                                    </Link>
+                            </div>
+                        )
                     }
                 </div>
             </div>
