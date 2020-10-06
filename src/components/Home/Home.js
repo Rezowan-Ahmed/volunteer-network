@@ -26,9 +26,10 @@ const Home = () => {
 
                 <div className="row">
                     {
-                        category.map((category) =>
+                        category.map((category) => 
                             <div className="col-md-3">
-                                <Link to={`/register/${category.id}`}>
+                                
+                                <Link to={`/register/${category.id}`} >
                                     <img style={{ width: '270px', height: '320px', borderRadius: '10px' }} src={category.image} alt="" />
                                     <h6 style={{ background: 'orange', height: '24px', textAlign: 'center' }}>{category.name}</h6>
                                     </Link>

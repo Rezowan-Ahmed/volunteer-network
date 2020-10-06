@@ -18,13 +18,30 @@ const EventTasks = () => {
         })
     }, [event])
 
-    function deleteEvent(id) {
-        fetch(`http://localhost:9010/cancelVolunteerEvent/${id}`, {
-            method: 'DELETE'
+    // function deleteEvent(id) {
+    //     fetch(`http://localhost:9010/cancelVolunteerEvent/${id}`, {
+    //         method: 'DELETE'
+    //     })
+    //     .then(res => res.json())
+    //     .then(data => {console.log(data)
+    //         Number(data)
+    //     })
+    // }
+
+    const deleteEvent = (id) => {
+        fetch('http://localhost:9010/cancelVolunteerEvent', {
+            method: 'DELETE',
+            headers:{ 
+                'Content-Type' : 'application/json',
+                id:id
+            }
         })
         .then(res => res.json())
-        .then(data => {console.log(data)
-            Number(data)
+        .then(data => {
+            if(data){
+                const dEvent = event.filter(data => data._id !== id)
+                setEvent(dEvent)
+            }
         })
     }
 
