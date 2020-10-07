@@ -7,7 +7,7 @@ const Admin = () => {
     const [registeredEvent, setRegisteredEvent] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:9010/allRegisteredEvent')
+        fetch('https://frozen-gorge-58608.herokuapp.com/allRegisteredEvent')
             .then(res => res.json())
             .then(data => setRegisteredEvent(data))
     }, [])
@@ -15,7 +15,7 @@ const Admin = () => {
 
    
     const deleteAllRegisteredEvent = (id) => {
-        fetch('http://localhost:9010/cancelVolunteerEvent', {
+        fetch('https://frozen-gorge-58608.herokuapp.com/cancelVolunteerEvent', {
             method: 'DELETE',
             headers:{ 
                 'Content-Type' : 'application/json',

@@ -18,7 +18,7 @@ const Register = () => {
     });
 
     useEffect(() => {
-        fetch('http://localhost:9010/categories/')
+        fetch('https://frozen-gorge-58608.herokuapp.com/categories/')
         .then(res => res.json())
         .then(data => setCategoryID(data))
     }, [])
@@ -46,7 +46,7 @@ const Register = () => {
         userInfo.name = name;
         
         setLoggedInUser(userInfo);
-        fetch('http://localhost:9010/addRegister', {
+        fetch('https://frozen-gorge-58608.herokuapp.com/addRegister', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

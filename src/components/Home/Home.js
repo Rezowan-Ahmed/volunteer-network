@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 const Home = () => {
     const [category, setCategory] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:9010/categories')
+        fetch('https://frozen-gorge-58608.herokuapp.com/categories')
             .then(res => res.json())
             .then(data => setCategory(data))
     }, [])

@@ -10,7 +10,7 @@ const EventTasks = () => {
     const [event, setEvent] = useState([])
 
     useEffect( () => {
-        fetch('http://localhost:9010/volunteerEvents?email=' + loggedInUser.email) 
+        fetch('https://frozen-gorge-58608.herokuapp.com/volunteerEvents?email=' + loggedInUser.email) 
            
         .then(res => res.json())
         .then(data => {
@@ -19,7 +19,7 @@ const EventTasks = () => {
     }, [event])
 
     const deleteEvent = (id) => {
-        fetch('http://localhost:9010/cancelVolunteerEvent', {
+        fetch('https://frozen-gorge-58608.herokuapp.com/cancelVolunteerEvent', {
             method: 'DELETE',
             headers:{ 
                 'Content-Type' : 'application/json',
