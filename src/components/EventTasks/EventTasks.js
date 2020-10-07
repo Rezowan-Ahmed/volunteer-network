@@ -18,16 +18,6 @@ const EventTasks = () => {
         })
     }, [event])
 
-    // function deleteEvent(id) {
-    //     fetch(`http://localhost:9010/cancelVolunteerEvent/${id}`, {
-    //         method: 'DELETE'
-    //     })
-    //     .then(res => res.json())
-    //     .then(data => {console.log(data)
-    //         Number(data)
-    //     })
-    // }
-
     const deleteEvent = (id) => {
         fetch('http://localhost:9010/cancelVolunteerEvent', {
             method: 'DELETE',
@@ -50,7 +40,7 @@ const EventTasks = () => {
         <Header></Header>
         <div>
             <div className="event_layout">
-            <Grid container item xs={12} spacing='5'>
+            <Grid container item xs={12} spacing='9'>
                         {
                             event.map(eventData => 
                                 <Grid item xs={12} md={6} >

@@ -11,6 +11,7 @@ import NoMatch from './components/NoMatch/NoMatch';
 import Register from './components/Register/Register';
 import EventTasks from './components/EventTasks/EventTasks';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import Admin from './components/Admin/Admin';
 
 export const UserContext = createContext();
 
@@ -27,7 +28,6 @@ function App() {
   });
   return (
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
-      <h3>email: {loggedInUser.email}</h3>
     <Router>
       <Switch>
         <Route exact path='/'>
@@ -44,6 +44,9 @@ function App() {
         </PrivateRoute>
         <PrivateRoute path='/event'>
           <EventTasks></EventTasks>
+        </PrivateRoute>
+        <PrivateRoute path='/admin'>
+          <Admin/>
         </PrivateRoute>
         <Route path='*'>
           <NoMatch></NoMatch>
