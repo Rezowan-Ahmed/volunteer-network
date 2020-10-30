@@ -1,8 +1,8 @@
 # Volunteer Network
 
-Live: https://github.com/Rezowan-Ahmed/volunteer-network-server
+Server-side: https://github.com/Rezowan-Ahmed/volunteer-network-server
 <br />
-Server-side: https://volunteer-network09.netlify.app/
+Live: https://volunteer-network09.netlify.app/
 
 
 # Overview:
